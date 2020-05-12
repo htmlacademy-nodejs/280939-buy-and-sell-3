@@ -11,7 +11,7 @@ const {
 const samples = require(`../../samples`);
 
 const DEFAULT_COUNT = 1;
-const FILE_NAME = `mock.json`;
+const FILE_NAME = `mocks.json`;
 const MAX_ITEMS_ALLOWED = 1000;
 
 const getUserCount = (paramValueArr) => {
