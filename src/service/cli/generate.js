@@ -14,7 +14,7 @@ const {
 } = require(`../../utils/utils`);
 
 const DEFAULT_COUNT = 1;
-const pathToFiles = path.join(process.cwd(), `src`, `samples`);
+const pathToFiles = path.join(process.cwd(), `data`);
 const FILE_NAME = `mocks.json`;
 const MAX_ITEMS_ALLOWED = 1000;
 
@@ -64,20 +64,20 @@ const generateMockData = async (count) => {
   const data = Array(count)
     .fill({})
     .map(() => {
-      const type = getRandomString(samples.type);
-      const title = getRandomString(samples.title);
-      const description = getRandomStrings(samples.description, 5).join(` `);
-      const category = getRandomStrings(samples.category);
+      const types = getRandomString(samples.types);
+      const titles = getRandomString(samples.titles);
+      const sentences = getRandomStrings(samples.sentences, 5).join(` `);
+      const categories = getRandomStrings(samples.categories);
       const sum = getRangomInteger(1000, 100000);
       const picture = getImageTitle();
 
       return {
-        type,
+        types,
         sum,
         picture,
-        title,
-        description,
-        category,
+        titles,
+        sentences,
+        categories,
       };
     });
 
