@@ -36,10 +36,19 @@ const getImageTitle = () => {
 };
 
 const generateMockData = async (count) => {
-  const typeSamples = await readFileAsync(`src/samples/type.txt`);
-  const titlesSamples = await readFileAsync(`src/samples/title.txt`);
-  const descriptionSamples = await readFileAsync(`src/samples/description.txt`);
-  const categorySamples = await readFileAsync(`src/samples/category.txt`);
+  const samples = await Promise.all([
+    `type`,
+    `title`,
+    `description`,
+    `category`,
+  ].map((item) => readFileAsync(`src/samples/${item}.txt`)));
+
+  const [
+    typeSamples,
+    titlesSamples,
+    descriptionSamples,
+    categorySamples,
+  ] = samples;
 
   const data = Array(count)
     .fill({})
