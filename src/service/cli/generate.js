@@ -1,17 +1,20 @@
 'use strict';
 
 const chalk = require(`chalk`);
+const path = require(`path`);
 const {
   exit,
   getRangomInteger,
   fixNumberFormat,
   getRandomString,
   getRandomStrings,
+  readDirAsync,
   readFileAsync,
   writeToFileAsync,
 } = require(`../../utils/utils`);
 
 const DEFAULT_COUNT = 1;
+const pathToFiles = path.join(process.cwd(), `src`, `samples`);
 const FILE_NAME = `mocks.json`;
 const MAX_ITEMS_ALLOWED = 1000;
 
@@ -35,28 +38,36 @@ const getImageTitle = () => {
   return `item${fixNumberFormat(index)}.jpg`;
 };
 
-const generateMockData = async (count) => {
-  const samples = await Promise.all([
-    `type`,
-    `title`,
-    `description`,
-    `category`,
-  ].map((item) => readFileAsync(`src/samples/${item}.txt`)));
+const getSamples = async () => {
+  const samples = {};
 
-  const [
-    typeSamples,
-    titlesSamples,
-    descriptionSamples,
-    categorySamples,
-  ] = samples;
+  const files = await readDirAsync(pathToFiles);
+
+  const filesWithTypesMap = files.map((file) => file.split(`.`));
+
+  filesWithTypesMap.forEach(([fileName, fileType]) => {
+    samples[fileName] = readFileAsync(path.join(pathToFiles, `${fileName}.${fileType}`));
+  });
+
+  for (const key in samples) {
+    if (samples[key]) {
+      samples[key] = await samples[key];
+    }
+  }
+
+  return samples;
+};
+
+const generateMockData = async (count) => {
+  const samples = await getSamples();
 
   const data = Array(count)
     .fill({})
     .map(() => {
-      const type = getRandomString(typeSamples);
-      const title = getRandomString(titlesSamples);
-      const description = getRandomStrings(descriptionSamples, 5).join(` `);
-      const category = getRandomStrings(categorySamples);
+      const type = getRandomString(samples.type);
+      const title = getRandomString(samples.title);
+      const description = getRandomStrings(samples.description, 5).join(` `);
+      const category = getRandomStrings(samples.category);
       const sum = getRangomInteger(1000, 100000);
       const picture = getImageTitle();
 

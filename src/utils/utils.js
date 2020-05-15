@@ -22,6 +22,13 @@ const shuffle = (someArray) => {
   return someArray;
 };
 
+const readDirAsync = (folderPath) => fs.promises.readdir(folderPath, (err, files) => {
+  if (err) {
+    console.log(chalk.red(err));
+  }
+  return files;
+});
+
 // eslint-disable-next-line consistent-return
 const readFileAsync = async (pathToFile) => {
   try {
@@ -82,6 +89,7 @@ const fixNumberFormat = (num) => {
 module.exports = {
   getRangomInteger,
   shuffle,
+  readDirAsync,
   readFileAsync,
   writeToFileAsync,
   exit,
