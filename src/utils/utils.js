@@ -26,10 +26,10 @@ const writeToFileAsync = async (pathToFile, name, content) => {
   const filePath = path.join(pathToFile, name);
   try {
     await fs.promises.writeFile(filePath, content, `utf8`);
-    console.log(`Файл ${chalk.red(name)} был создан!`);
+    console.log(`Файл ${chalk.green(name)} был создан!`);
     console.log(`Расположение: ${chalk.cyan(path.resolve(filePath))}`);
   } catch (err) {
-    console.log(err);
+    console.log(chalk.red(err));
   }
 };
 

@@ -1,5 +1,6 @@
 'use strict';
 
+const chalk = require(`chalk`);
 const {
   exit,
   getRangomInteger,
@@ -18,11 +19,11 @@ const getUserCount = (paramValueArr) => {
   const parsedCount = parseInt(paramValueArr[0], 10);
 
   if (isNaN(parsedCount)) {
-    console.error(`Вы не указали параметры или они не валидны. Будет создана 1 запись.`);
+    console.log(chalk.red(`Вы не указали параметры или они не валидны. Будет создана 1 запись.`));
 
     return DEFAULT_COUNT;
   } else if (parsedCount > MAX_ITEMS_ALLOWED) {
-    console.error(`Возможно создать не больше ${MAX_ITEMS_ALLOWED} записей`);
+    console.log(chalk.red(`Возможно создать не больше ${MAX_ITEMS_ALLOWED} записей`));
     exit(`error`);
   }
 
