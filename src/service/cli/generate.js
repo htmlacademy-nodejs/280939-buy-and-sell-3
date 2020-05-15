@@ -11,15 +11,16 @@ const {
   readDirAsync,
   readFileAsync,
   writeToFileAsync,
+  parseCommandParam,
 } = require(`../../utils/utils`);
+const {PATH_TO_FILES} = require(`../../config/constants`);
 
 const DEFAULT_COUNT = 1;
-const pathToFiles = path.join(process.cwd(), `data`);
 const FILE_NAME = `mocks.json`;
 const MAX_ITEMS_ALLOWED = 1000;
 
-const getUserCount = (paramValueArr) => {
-  const parsedCount = parseInt(paramValueArr[0], 10);
+const getUserCount = (input) => {
+  const parsedCount = parseCommandParam(input);
 
   if (isNaN(parsedCount)) {
     console.log(chalk.red(`Вы не указали параметры или они не валидны. Будет создана 1 запись.`));
@@ -27,7 +28,7 @@ const getUserCount = (paramValueArr) => {
     return DEFAULT_COUNT;
   } else if (parsedCount > MAX_ITEMS_ALLOWED) {
     console.log(chalk.red(`Возможно создать не больше ${MAX_ITEMS_ALLOWED} записей`));
-    exit(`error`);
+    exit(`ERROR`);
   }
 
   return parsedCount;
@@ -41,12 +42,12 @@ const getImageTitle = () => {
 const getSamples = async () => {
   const samples = {};
 
-  const files = await readDirAsync(pathToFiles);
+  const files = await readDirAsync(PATH_TO_FILES);
 
   const filesWithTypesMap = files.map((file) => file.split(`.`));
 
   filesWithTypesMap.forEach(([fileName, fileType]) => {
-    samples[fileName] = readFileAsync(path.join(pathToFiles, `${fileName}.${fileType}`));
+    samples[fileName] = readFileAsync(path.join(PATH_TO_FILES, `${fileName}.${fileType}`));
   });
 
   for (const key in samples) {
@@ -88,7 +89,7 @@ const run = async (input) => {
   const count = getUserCount(input);
   const content = await generateMockData(count);
   await writeToFileAsync(``, FILE_NAME, JSON.stringify(content));
-  exit(`success`);
+  exit(`SUCCESS`);
 };
 
 module.exports = {
