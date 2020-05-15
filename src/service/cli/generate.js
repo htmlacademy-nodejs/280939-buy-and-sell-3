@@ -7,9 +7,9 @@ const {
   fixNumberFormat,
   getRandomString,
   getRandomStrings,
+  readFileAsync,
   writeToFileAsync,
 } = require(`../../utils/utils`);
-const samples = require(`../../samples`);
 
 const DEFAULT_COUNT = 1;
 const FILE_NAME = `mocks.json`;
@@ -35,12 +35,11 @@ const getImageTitle = () => {
   return `item${fixNumberFormat(index)}.jpg`;
 };
 
-const generateMockData = (count) => {
-  const typeSamples = samples.type;
-  const titlesSamples = samples.title;
-  const descriptionSamples = samples.description;
-  const categorySamples = samples.category;
-
+const generateMockData = async (count) => {
+  const typeSamples = await readFileAsync(`src/samples/type.txt`);
+  const titlesSamples = await readFileAsync(`src/samples/title.txt`);
+  const descriptionSamples = await readFileAsync(`src/samples/description.txt`);
+  const categorySamples = await readFileAsync(`src/samples/category.txt`);
 
   const data = Array(count)
     .fill({})
@@ -67,7 +66,7 @@ const generateMockData = (count) => {
 
 const run = async (input) => {
   const count = getUserCount(input);
-  const content = generateMockData(count);
+  const content = await generateMockData(count);
   await writeToFileAsync(``, FILE_NAME, JSON.stringify(content));
   exit(`success`);
 };
