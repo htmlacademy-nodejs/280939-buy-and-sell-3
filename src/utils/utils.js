@@ -22,6 +22,20 @@ const shuffle = (someArray) => {
   return someArray;
 };
 
+// eslint-disable-next-line consistent-return
+const readFileAsync = async (pathToFile) => {
+  try {
+    const data = await fs.promises.readFile(pathToFile, `utf8`);
+
+    return data
+      .toString()
+      .split(`\n`)
+      .filter(Boolean);
+  } catch (err) {
+    console.log(chalk.red(err));
+  }
+};
+
 const writeToFileAsync = async (pathToFile, name, content) => {
   const filePath = path.join(pathToFile, name);
   try {
@@ -68,6 +82,7 @@ const fixNumberFormat = (num) => {
 module.exports = {
   getRangomInteger,
   shuffle,
+  readFileAsync,
   writeToFileAsync,
   exit,
   getRandomString,
