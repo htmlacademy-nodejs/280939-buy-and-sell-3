@@ -12,6 +12,8 @@ const app = express();
 app.set(`views`, path.join(__dirname, `./templates`));
 app.set(`view engine`, `pug`);
 
+app.use(express.static(path.resolve(__dirname, `public`)));
+
 Object.keys(routers).forEach((key) => {
   app.use(key, routers[key]);
 });
