@@ -22,14 +22,35 @@ const shuffle = (someArray) => {
   return someArray;
 };
 
+const readDirAsync = (folderPath) => fs.promises.readdir(folderPath, (err, files) => {
+  if (err) {
+    console.log(chalk.red(err));
+  }
+  return files;
+});
+
+// eslint-disable-next-line consistent-return
+const readFileAsync = async (pathToFile) => {
+  try {
+    const data = await fs.promises.readFile(pathToFile, `utf8`);
+
+    return data
+      .toString()
+      .split(`\n`)
+      .filter(Boolean);
+  } catch (err) {
+    console.log(chalk.red(err));
+  }
+};
+
 const writeToFileAsync = async (pathToFile, name, content) => {
   const filePath = path.join(pathToFile, name);
   try {
     await fs.promises.writeFile(filePath, content, `utf8`);
-    console.log(`Файл ${chalk.red(name)} был создан!`);
+    console.log(`Файл ${chalk.green(name)} был создан!`);
     console.log(`Расположение: ${chalk.cyan(path.resolve(filePath))}`);
   } catch (err) {
-    console.log(err);
+    console.log(chalk.red(err));
   }
 };
 
@@ -68,6 +89,8 @@ const fixNumberFormat = (num) => {
 module.exports = {
   getRangomInteger,
   shuffle,
+  readDirAsync,
+  readFileAsync,
   writeToFileAsync,
   exit,
   getRandomString,
