@@ -6,7 +6,10 @@
   "scripts": {
     "test": "npm run eslint",
     "eslint": "eslint --ext .js src/",
-    "start": "node ./src/service/service.js"
+    "start": "node ./src/service/service.js",
+    "server": "npm start -- --server",
+    "watch": "npx nodemon --exec \"npm run server\" -w ./src -w mocks.json",
+    "start-front-server": "node ./src/express/index.js"
   },
   "repository": {
     "type": "git",
@@ -20,9 +23,11 @@
   "homepage": "https://github.com/topus009/280939-buy-and-sell-3#readme",
   "devDependencies": {
     "eslint": "6.8.0",
-    "eslint-config-htmlacademy": "0.5.2"
+    "eslint-config-htmlacademy": "0.5.2",
+    "nodemon": "2.0.4"
   },
   "dependencies": {
-    "chalk": "^4.0.0"
+    "chalk": "^4.0.0",
+    "express": "4.17.1"
   }
 }
