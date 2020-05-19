@@ -1,5 +1,5 @@
-mixin ticket-card(props)
-  li.tickets-list__item
+mixin ticket-card(className, props)
+  li(class=`${className}__item`)
     .ticket-card(class=`ticket-card--color${props.color}`)
       +ticket-img(props.img, 'ticket-card__img')
       .ticket-card__info
@@ -18,14 +18,23 @@ mixin ticket-card(props)
           p= `${props.description}`
 
 mixin tickets-list(props)
+  - listType = props.listType || 'tickets'
+  - className = listType === 'tickets' ? `${listType}-list` : listType
   if props.tickets && props.tickets.length
-    section.tickets-list
+    section(class=className)
       if props.titleHidden
         h2.visually-hidden= `${props.titleHidden}`
-      .tickets-list__wrapper
-        if props.title
-          .tickets-list__header
-            p.tickets-list__title= `${props.title}`
-        ul
+      div(class=`${className}__wrapper`)
+        if listType === 'tickets'
+          if props.title
+            div(class=`${className}__header`)
+              p(class=`${className}__title`)= `${props.title}`
+              if props.showMoreItemsCount
+                a(class=`${className}__link` href='#')= `Еще ${props.showMoreItemsCount}`
+        else
+          p(class=`${className}__label`)
+            | Найдено
+            span.js-results= `${props.tickets.length} публикации`
+        ul(class=`${listType === 'tickets' ? '' : `${listType}__list`}`)
           each ticketItem in props.tickets
-            +ticket-card(ticketItem)
+            +ticket-card(className, ticketItem)
