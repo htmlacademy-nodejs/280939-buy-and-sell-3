@@ -1,0 +1,18 @@
+include ../REUSED/mixins/index.pug
+
++layout()
+  +html()
+    +body()
+      +header({
+        logged: true,
+        list: {
+          comments: {
+            active: true,
+          },
+        },
+        inputHref: 'ticket-form.html',
+      })
+      main.page-content
+        section.comments
+          .comments__wrapper
+            p.comments__message У ваших публикаций еще нет комментариев.
