@@ -1,0 +1,35 @@
+mixin getHeaderList(defaultList, customList)
+  nav.header__user-menu
+    ul.header__list
+      for defaultItem, key in defaultList
+        - isActive = (customList[key] && customList[key].active) || defaultItem.active
+        li.header__item(class=`${isActive ? 'header__item--active' : ''}`)
+          if !isActive
+            - anchorHref = (customList[key] && customList[key].href) || defaultItem.href
+            - anchorAttrs = !isActive ? { href: `${anchorHref}` } : {}
+            a&attributes(anchorAttrs)= `${defaultItem.title}`
+          else
+            a= `${defaultItem.title}`
+
+mixin header(options = {})
+  -
+    defaultHeaderList = {
+      myTickets: {
+        title: 'Публикации',
+        active: false,
+        href: 'my-tickets.html'
+      },
+      comments: {
+        title: 'Комментарии',
+        active: false,
+        href: 'comments.html'
+      },
+    }
+  - loggedClass = options.logged ? 'header--logged' : ''
+  header.header(class=`${loggedClass}`)
+    .header__wrapper
+      include ../components/header-logo.pug
+      +getHeaderList(defaultHeaderList, (options.list || {}))
+      include ../components/form--search.pug
+      include ../components/avatar.pug
+      a.header__input(href=`${options.inputHref || '#'}`) Вход и регистрация

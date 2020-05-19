@@ -1,0 +1,31 @@
+mixin ticket-card(props)
+  li.tickets-list__item
+    .ticket-card(class=`ticket-card--color${props.color}`)
+      +ticket-img(props.img, 'ticket-card__img')
+      .ticket-card__info
+        span.ticket-card__label= `${props.label}`
+        if props.categories && props.categories.length
+          .ticket-card__categories
+            each category in props.categories
+              a(href='#')= `${category}`
+        .ticket-card__header
+          h3.ticket-card__title
+            a(href='#')= `${props.title}`
+          p.ticket-card__price
+            span.js-sum= `${props.price}`
+            |  ₽
+        .ticket-card__desc
+          p= `${props.description}`
+
+mixin tickets-list(props)
+  if props.tickets && props.tickets.length
+    section.tickets-list
+      if props.titleHidden
+        h2.visually-hidden= `${props.titleHidden}`
+      .tickets-list__wrapper
+        if props.title
+          .tickets-list__header
+            p.tickets-list__title= `${props.title}`
+        ul
+          each ticketItem in props.tickets
+            +ticket-card(ticketItem)
