@@ -1,6 +1,7 @@
 {
   "reporters": ["html"],
-  "minLines": 150,
+  "minLines": 120,
+  "maxLines": 500,
   "mode": "weak",
   "output": "./",
   "silent": true

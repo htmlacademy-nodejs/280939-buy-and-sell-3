@@ -1,0 +1,38 @@
+[
+  {
+    "color":"09",
+    "img":{"src":"img/item09.jpg","srcset":"img/item09@2x.jpg 2x"},
+    "label":"Куплю",
+    "categories":["Дом"],
+    "title":"Монстера",
+    "price":1000,
+    "description":"Куплю монстеру зеленую в хорошем зеленом состоянии, буду поливать..."
+  },
+  {
+    "color":"10",
+    "img":{"src":"img/item10.jpg","srcset":"img/item10@2x.jpg 2x"},
+    "label":"ПРОДАМ",
+    "categories":["Дом"],
+    "title":"Мое старое кресло",
+    "price":4000,
+    "description":"Продам свое старое кресло, чтобы сидеть и читать книги зимними..."
+  },
+  {
+    "color":"11",
+    "img":{"src":"img/item11.jpg","srcset":"img/item11@2x.jpg 2x"},
+    "label":"ПРОДАМ",
+    "categories":["ЭЛЕКТРОНИКА"],
+    "title":"Дедушкины часы",
+    "price":45000,
+    "description":"Продаю дедушкины часы в прекрасном состоянии, ходят до..."
+  },
+  {
+    "color":"04",
+    "img":{"src":"img/item04.jpg","srcset":"img/item04@2x.jpg 2x"},
+    "label":"Куплю",
+    "categories":["Дом"],
+    "title":"Кофеварка",
+    "price":2000,
+    "description":"Куплю вот такую итальянскую кофеварку, можно любой фирмы..."
+  }
+]
