@@ -11,7 +11,7 @@
   {
     "color":"02",
     "img":{"src":"img/item02.jpg","srcset":"img/item02@2x.jpg 2x"},
-    "label":"ПРОДАМ",
+    "label":"Продам",
     "categories":["Дом"],
     "title":"Мое старое кресло",
     "price":4000,
@@ -20,8 +20,8 @@
   {
     "color":"03",
     "img":{"src":"img/item03.jpg","srcset":"img/item03@2x.jpg 2x"},
-    "label":"ПРОДАМ",
-    "categories":["ЭЛЕКТРОНИКА","Дом"],
+    "label":"Продам",
+    "categories":["Электроника","Дом"],
     "title":"Дедушкины часы",
     "price":45000,
     "description":"Продаю дедушкины часы в прекрасном состоянии, ходят до..."
@@ -38,8 +38,8 @@
   {
     "color":"05",
     "img":{"src":"img/item05.jpg","srcset":"img/item05@2x.jpg 2x"},
-    "label":"ПРОДАМ",
-    "categories":["Авто","ЭЛЕКТРОНИКА"],
+    "label":"Продам",
+    "categories":["Авто","Электроника"],
     "title":"Ленд Ровер",
     "price":900000,
     "description":"Куплю монстеру зеленую в хорошем зеленом состоянии, буду поливать..."
@@ -47,8 +47,8 @@
   {
     "color":"06",
     "img":{"src":"img/item06.jpg","srcset":"img/item06@2x.jpg 2x"},
-    "label":"ПРОДАМ",
-    "categories":["ЭЛЕКТРОНИКА"],
+    "label":"Продам",
+    "categories":["Электроника"],
     "title":"Ableton",
     "price":88000,
     "description":"Продам свое старое кресло, чтобы сидеть и читать книги зимними..."
@@ -56,7 +56,7 @@
   {
     "color":"07",
     "img":{"src":"img/item07.jpg","srcset":"img/item07@2x.jpg 2x"},
-    "label":"ПРОДАМ",
+    "label":"Продам",
     "categories":["Спорт и отдых"],
     "title":"Доска",
     "price":55000,
@@ -66,7 +66,7 @@
     "color":"08",
     "img":{"src":"img/item08.jpg","srcset":"img/item08@2x.jpg 2x"},
     "label":"Куплю",
-    "categories":["ЭЛЕКТРОНИКА"],
+    "categories":["Электроника"],
     "title":"Фотик Canon",
     "price":32000,
     "description":"Куплю вот такую итальянскую кофеварку, можно любой фирмы..."
@@ -83,7 +83,7 @@
   {
     "color":"10",
     "img":{"src":"img/item10.jpg","srcset":"img/item10@2x.jpg 2x"},
-    "label":"ПРОДАМ",
+    "label":"Продам",
     "categories":["Дом"],
     "title":"Мое старое кресло",
     "price":4000,
@@ -92,8 +92,8 @@
   {
     "color":"11",
     "img":{"src":"img/item11.jpg","srcset":"img/item11@2x.jpg 2x"},
-    "label":"ПРОДАМ",
-    "categories":["ЭЛЕКТРОНИКА"],
+    "label":"Продам",
+    "categories":["Электроника"],
     "title":"Дедушкины часы",
     "price":45000,
     "description":"Продаю дедушкины часы в прекрасном состоянии, ходят до..."
@@ -102,7 +102,7 @@
     "color":"12",
     "img":{"src":"img/item12.jpg","srcset":"img/item12@2x.jpg 2x"},
     "label":"Куплю",
-    "categories":["ЭЛЕКТРОНИКА"],
+    "categories":["Электроника"],
     "title":"Радио Панасоник",
     "price": 32000,
     "description":"Куплю вот такую итальянскую кофеварку, можно любой фирмы..."
@@ -110,8 +110,8 @@
   {
     "color":"13",
     "img":{"src":"img/item13.jpg","srcset":"img/item13@2x.jpg 2x"},
-    "label":"ПРОДАМ",
-    "categories":["ЭЛЕКТРОНИКА"],
+    "label":"Продам",
+    "categories":["Электроника"],
     "title":"Штатив Sony",
     "price": 8000,
     "description":"Продам свое старое кресло, чтобы сидеть и читать книги зимними..."
@@ -120,7 +120,7 @@
     "color":"14",
     "img":{"src":"img/item14.jpg","srcset":"img/item14@2x.jpg 2x"},
     "label":"Куплю",
-    "categories":["ЭЛЕКТРОНИКА"],
+    "categories":["Электроника"],
     "title":"Дрон с камерой",
     "price": 32000,
     "description":"Куплю вот такую итальянскую кофеварку, можно любой фирмы..."
@@ -128,7 +128,7 @@
   {
     "color":"15",
     "img":{"src":"img/item15.jpg","srcset":"img/item15@2x.jpg 2x"},
-    "label":"ПРОДАМ",
+    "label":"Продам",
     "categories":["Электроника"],
     "title":"Кофемашина",
     "price": 26000,
@@ -137,7 +137,7 @@
   {
     "color":"16",
     "img":{"src":"img/item16.jpg","srcset":"img/item16@2x.jpg 2x"},
-    "label":"ПРОДАМ",
+    "label":"Продам",
     "categories":["Авто"],
     "title":"Хонда",
     "price": 100000,
