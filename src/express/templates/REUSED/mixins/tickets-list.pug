@@ -20,6 +20,22 @@ mixin ticket-card(className, props, isUserEditable)
       if isUserEditable
         button.ticket-card__del.js-delete(type='button') Удалить
 
+mixin pagination
+  .tickets-list__pagination
+    ul.pagination
+      li
+        a.active(href='#') 1
+      li
+        a(href='#') 2
+      li
+        a(href='#') 3
+      li
+        a(href='#') 4
+      li
+        a(href='#') 5
+      li
+        a(href='#') дальше
+
 mixin tickets-list(props)
   - isUserEditable = props.js && props.logged
   - listType = props.listType || 'tickets'
@@ -34,6 +50,8 @@ mixin tickets-list(props)
             if props.title
               div(class=`${className}__header`)
                 p(class=`${className}__title`)= `${props.title}`
+                  if props.categoryTicketsCount
+                    b.js-qty= `${props.categoryTicketsCount}`
                 if props.showMoreItemsCount
                   a(class=`${className}__link` href='#')= `Еще ${props.showMoreItemsCount}`
           else
@@ -47,3 +65,5 @@ mixin tickets-list(props)
         ul(class=`${listType === 'tickets' ? '' : `${listType}__list`}`)
           each ticketItem in props.tickets
             +ticket-card(className, ticketItem, isUserEditable)
+        if props.pagination
+          +pagination

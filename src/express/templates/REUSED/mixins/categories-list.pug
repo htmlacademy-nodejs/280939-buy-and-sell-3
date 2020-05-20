@@ -1,0 +1,21 @@
+mixin category-item(className, props, isActive)
+  - img = props.img
+  - itemClassName = 'category-tile'
+  - anchorClassName = isActive ? `${itemClassName}--active` : itemClassName
+  li(class=`${className}__item`)
+    a(class=anchorClassName href='#')
+      span(class=`${itemClassName}__image`)
+        img(src=img.src srcset=img.srcset alt='Иконка категории')
+      span(class=`${itemClassName}__label`)
+        span= `${props.label}`
+        span(class=`${itemClassName}__qty js-qty`)= `${props.count}`
+
+mixin categories-list(props)
+  - className = 'categories-list'
+  section(class=className)
+    if props.titleHidden
+      h1.visually-hidden= `${props.titleHidden}`
+    ul(class=`${className}__wrapper`)
+      each category, categoryIndex in props.categories
+        - isActive = (categoryIndex + 1) === props.activeIndex
+        +category-item(className, category, isActive)
