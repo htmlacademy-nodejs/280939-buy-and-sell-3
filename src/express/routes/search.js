@@ -2,8 +2,10 @@
 
 const {Router} = require(`express`);
 
-const newTicketsListData = require(`../../../templateData/newTicketsListData.json`);
-const searchResults = require(`../../../templateData/searchResults.json`);
+const {
+  searchResults,
+  newTicketsListData
+} = require(`../../../templateData/bd.js`);
 
 const SearchRouter = new Router();
 
