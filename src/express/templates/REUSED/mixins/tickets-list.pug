@@ -1,4 +1,4 @@
-mixin ticket-card(className, props)
+mixin ticket-card(className, props, isUserEditable)
   li(class=`${className}__item`)
     .ticket-card(class=`ticket-card--color${props.color}`)
       +ticket-img(props.img, 'ticket-card__img')
@@ -14,10 +14,14 @@ mixin ticket-card(className, props)
           p.ticket-card__price
             span.js-sum= `${props.price}`
             |  ₽
-        .ticket-card__desc
-          p= `${props.description}`
+        if !isUserEditable
+          .ticket-card__desc
+            p= `${props.description}`
+      if isUserEditable
+        button.ticket-card__del.js-delete(type='button') Удалить
 
 mixin tickets-list(props)
+  - isUserEditable = props.js && props.logged
   - listType = props.listType || 'tickets'
   - className = listType === 'tickets' ? `${listType}-list` : listType
   if props.tickets && props.tickets.length
@@ -26,15 +30,20 @@ mixin tickets-list(props)
         h2.visually-hidden= `${props.titleHidden}`
       div(class=`${className}__wrapper`)
         if listType === 'tickets'
-          if props.title
+          if !isUserEditable
+            if props.title
+              div(class=`${className}__header`)
+                p(class=`${className}__title`)= `${props.title}`
+                if props.showMoreItemsCount
+                  a(class=`${className}__link` href='#')= `Еще ${props.showMoreItemsCount}`
+          else
             div(class=`${className}__header`)
-              p(class=`${className}__title`)= `${props.title}`
-              if props.showMoreItemsCount
-                a(class=`${className}__link` href='#')= `Еще ${props.showMoreItemsCount}`
+              a(class=`${className}__btn btn btn--big` href='#')
+                span Новая публикация
         else
           p(class=`${className}__label`)
             | Найдено
             span.js-results= `${props.tickets.length} публикации`
         ul(class=`${listType === 'tickets' ? '' : `${listType}__list`}`)
           each ticketItem in props.tickets
-            +ticket-card(className, ticketItem)
+            +ticket-card(className, ticketItem, isUserEditable)

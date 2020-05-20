@@ -1,0 +1,47 @@
+[
+  {
+    "color":"06",
+    "img":{"src":"img/item06.jpg","srcset":"img/item06@2x.jpg 2x"},
+    "label":"ПРОДАМ",
+    "categories":["ЭЛЕКТРОНИКА"],
+    "title":"Ableton",
+    "price":88000,
+    "description":"Продам свое старое кресло, чтобы сидеть и читать книги зимними..."
+  },
+  {
+    "color":"10",
+    "img":{"src":"img/item10.jpg","srcset":"img/item10@2x.jpg 2x"},
+    "label":"ПРОДАМ",
+    "categories":["Дом"],
+    "title":"Мое старое кресло",
+    "price":4000,
+    "description":"Продам свое старое кресло, чтобы сидеть и читать книги зимними..."
+  },
+  {
+    "color":"04",
+    "img":{"src":"img/item04.jpg","srcset":"img/item04@2x.jpg 2x"},
+    "label":"Куплю",
+    "categories":["Дом"],
+    "title":"Кофеварка",
+    "price":2000,
+    "description":"Куплю вот такую итальянскую кофеварку, можно любой фирмы..."
+  },
+  {
+    "color":"08",
+    "img":{"src":"img/item08.jpg","srcset":"img/item08@2x.jpg 2x"},
+    "label":"Куплю",
+    "categories":["ЭЛЕКТРОНИКА"],
+    "title":"Фотик Canon",
+    "price":32000,
+    "description":"Куплю вот такую итальянскую кофеварку, можно любой фирмы..."
+  },
+  {
+    "color":"01",
+    "img":{"src":"img/item01.jpg","srcset":"img/item01@2x.jpg 2x"},
+    "label":"Куплю",
+    "categories":["Дом"],
+    "title":"Монстера",
+    "price":1000,
+    "description":"Куплю монстеру зеленую в хорошем зеленом состоянии, буду поливать..."
+  }
+]
