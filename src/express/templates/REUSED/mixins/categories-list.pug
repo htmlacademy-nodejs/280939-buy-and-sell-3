@@ -1,9 +1,9 @@
-mixin category-item(className, props, isActive)
+mixin category-item(className, props, isActive, anchorDefaultClassName)
   - img = props.img
   - itemClassName = 'category-tile'
   - anchorClassName = isActive ? `${itemClassName}--active` : itemClassName
   li(class=`${className}__item`)
-    a(class=anchorClassName href='#')
+    a(class=`${anchorDefaultClassName ? `${anchorClassName} ${anchorClassName}--default` : anchorClassName}` href='#')
       span(class=`${itemClassName}__image`)
         img(src=img.src srcset=img.srcset alt='Иконка категории')
       span(class=`${itemClassName}__label`)
@@ -18,4 +18,4 @@ mixin categories-list(props)
     ul(class=`${className}__wrapper`)
       each category, categoryIndex in props.categories
         - isActive = (categoryIndex + 1) === props.activeIndex
-        +category-item(className, category, isActive)
+        +category-item(className, category, isActive, props.anchorDefaultClassName)
