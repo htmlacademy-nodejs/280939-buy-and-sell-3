@@ -10,4 +10,5 @@ module.exports = {
   popularTicketsListData: bd.filter((item) => [`09`, `10`, `11`, `04`].includes(item.color)),
   categoryTicketsListData: bd.filter((item) => [`06`, `08`, `15`, `12`, `13`, `14`, `10`, `06`].includes(item.color)),
   categoriesListData: categoriesDb,
+  selectedTicket: bd.find((item) => item.color === `02`)
 };
