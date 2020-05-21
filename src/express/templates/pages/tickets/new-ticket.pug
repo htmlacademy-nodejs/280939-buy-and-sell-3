@@ -1,4 +1,4 @@
-include ../REUSED/mixins/index.pug
+include ../../common/mixins/index.pug
 
 +layout()
   +html()
@@ -8,4 +8,4 @@ include ../REUSED/mixins/index.pug
         inputHref: 'ticket-form.html',
       })
       main.page-content
-        +ticket-form(selectedTicket)
+        +ticket-form({}, true)

@@ -11,11 +11,11 @@ const {
 
 const MyRouter = new Router();
 
-MyRouter.get(`/`, (req, res) => res.render(`tickets/my-tickets`, {
+MyRouter.get(`/`, (req, res) => res.render(`pages/tickets/my-tickets`, {
   myTicketsListData,
 }));
 
-MyRouter.get(`/comments`, (req, res) => res.render(`tickets/comments`, {
+MyRouter.get(`/comments`, (req, res) => res.render(`pages/tickets/comments`, {
   ...getDataForCommentsPage({myTicketsListData, usersData, commentsData}),
 }));
 

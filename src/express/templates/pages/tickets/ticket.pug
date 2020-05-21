@@ -1,10 +1,11 @@
-include ../REUSED/mixins/index.pug
+include ../../common/mixins/index.pug
 
 +layout()
   +html()
     +body()
       +header({
-        inputHref: 'ticket-form.html'
+        logged: true,
+        inputHref: 'ticket-form.html',
       })
       main.page-content
         +ticket({
@@ -13,4 +14,5 @@ include ../REUSED/mixins/index.pug
             srcset: 'img/ticket@2x.jpg 2x',
           },
           comments: {},
+          logged: true,
         })

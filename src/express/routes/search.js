@@ -9,11 +9,11 @@ const {
 
 const SearchRouter = new Router();
 
-SearchRouter.get(`/`, (req, res) => res.render(`search/search-result`, {
+SearchRouter.get(`/`, (req, res) => res.render(`pages/search/search-result`, {
   searchResults,
   newTicketsListData
 }));
-SearchRouter.get(`/empty`, (req, res) => res.render(`search/search-result--empty`, {
+SearchRouter.get(`/empty`, (req, res) => res.render(`pages/search/search-result--empty`, {
   newTicketsListData
 }));
 

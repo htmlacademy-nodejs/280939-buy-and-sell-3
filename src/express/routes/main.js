@@ -10,12 +10,12 @@ const {
 
 const MainRouter = new Router();
 
-MainRouter.get(`/`, (req, res) => res.render(`main/main`, {
+MainRouter.get(`/`, (req, res) => res.render(`pages/main/main`, {
   newTicketsListData,
   popularTicketsListData,
   categoriesListData,
 }));
-MainRouter.get(`/register`, (req, res) => res.render(`main/sign-up`));
-MainRouter.get(`/login`, (req, res) => res.render(`main/login`));
+MainRouter.get(`/register`, (req, res) => res.render(`pages/main/sign-up`));
+MainRouter.get(`/login`, (req, res) => res.render(`pages/main/login`));
 
 module.exports = MainRouter;
