@@ -34,10 +34,7 @@ const readFileAsync = async (pathToFile) => {
   try {
     const data = await fs.promises.readFile(pathToFile, `utf8`);
 
-    return data
-      .toString()
-      .split(`\n`)
-      .filter(Boolean);
+    return data.toString().split(`\n`).filter(Boolean);
   } catch (err) {
     console.log(chalk.red(err));
   }
