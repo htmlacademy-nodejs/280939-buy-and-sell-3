@@ -1,0 +1,5 @@
+mixin form-search(query = '')
+  form.search(method='get' action='#' autocomplete='off')
+    input(type='search' name='search' placeholder='Поиск' aria-label='Поиск' value=query)
+    .search__icon
+    .search__close-btn

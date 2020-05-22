@@ -30,7 +30,8 @@ mixin header(options = {})
     .header__wrapper
       include ../components/header-logo.pug
       +getHeaderList(defaultHeaderList, (options.list || {}))
-      include ../components/form--search.pug
+      +form-search(options.query)
       if options.logged && options.currentUser
         +avatar(options.currentUser.avatar)
+      else
         a.header__input(href=`${options.inputHref || '#'}`) Вход и регистрация

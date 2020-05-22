@@ -49,7 +49,7 @@ mixin ticket-comment-form
           span Обязательное поле
       button.comment-form__button.btn.btn--white.js-button(type='submit' disabled) Отправить
 
-mixin ticket-comments(comments, logged)
+mixin ticket-comments(comments, logged = false)
   .ticket__comments
     if logged
       h2.ticket__subtitle Коментарии
@@ -95,4 +95,4 @@ mixin ticket(props = {})
       .ticket__content
         +ticket-img(props.img)
         +ticket-info
-      +ticket-comments(props.comments, props.logged = false)
+      +ticket-comments(props.comments, props.logged)
