@@ -30,13 +30,19 @@ const readDirAsync = (folderPath) => fs.promises.readdir(folderPath, (err, files
 });
 
 // eslint-disable-next-line consistent-return
-const readFileAsync = async (pathToFile) => {
+const readFileAsync = async (pathToFile, asText) => {
   try {
     const data = await fs.promises.readFile(pathToFile, `utf8`);
-
+    if (asText) {
+      return data;
+    }
     return data.toString().split(`\n`).filter(Boolean);
   } catch (err) {
     console.log(chalk.red(err));
+    if (asText) {
+      return `[]`;
+    }
+    return [];
   }
 };
 
@@ -52,7 +58,7 @@ const writeToFileAsync = async (pathToFile, name, content) => {
 };
 
 const exit = (type) => {
-  process.exit(exitCodes[type] || exitCodes.success);
+  process.exit(exitCodes[type] || exitCodes.SUCCESS);
 };
 
 const getRandomString = (arr) => {
@@ -83,6 +89,19 @@ const fixNumberFormat = (num) => {
   return num;
 };
 
+const parseCommandParam = (param) => parseInt(param[0], 10);
+
+const writeHead = (
+    res,
+    status,
+    contentType = `text/html`,
+    charset = `UTF-8`,
+) => {
+  res.writeHead(status, {
+    'Content-Type': `${contentType}; charset=${charset}`,
+  });
+};
+
 module.exports = {
   getRangomInteger,
   shuffle,
@@ -93,4 +112,6 @@ module.exports = {
   getRandomString,
   getRandomStrings,
   fixNumberFormat,
+  parseCommandParam,
+  writeHead,
 };
