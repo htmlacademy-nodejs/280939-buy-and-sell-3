@@ -30,6 +30,7 @@ OffersRouter.get(`/edit/:id`, (req, res) => res.render(`pages/tickets/ticket-edi
 }));
 OffersRouter.get(`/:id`, (req, res) => res.render(`pages/tickets/ticket`, {
   currentUser,
+  selectedTicket,
 }));
 
 module.exports = OffersRouter;

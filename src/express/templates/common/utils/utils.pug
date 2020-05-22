@@ -1,0 +1,6 @@
+mixin shortenText(text, component = 'span', maxLength = 65)
+  if text.length > maxLength
+    - text.length = maxLength
+    #{span}= `${text}...`
+  else
+    #{span}= `${text}`
