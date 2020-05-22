@@ -3,8 +3,10 @@ include ../../common/mixins/index.pug
 +layout()
   +html()
     +body()
+      //- logged: true,
+      //- currentUser,
       +header({
-        inputHref: 'sign-up.html'
+        inputHref: 'sign-up.html',
       })
       main.page-content
         +categories-list({

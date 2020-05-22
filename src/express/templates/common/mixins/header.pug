@@ -31,5 +31,6 @@ mixin header(options = {})
       include ../components/header-logo.pug
       +getHeaderList(defaultHeaderList, (options.list || {}))
       include ../components/form--search.pug
-      include ../components/avatar.pug
-      a.header__input(href=`${options.inputHref || '#'}`) Вход и регистрация
+      if options.logged && options.currentUser
+        +avatar(options.currentUser.avatar)
+        a.header__input(href=`${options.inputHref || '#'}`) Вход и регистрация

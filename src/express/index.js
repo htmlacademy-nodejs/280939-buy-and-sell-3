@@ -21,8 +21,8 @@ Object.keys(routers).forEach((key) => {
 app.use((err, req, res, next) => {
   console.log(chalk.red(err.message));
   res
-  .status(500)
-  .render(`errors/500`);
+    .status(500)
+    .render(`errors/500`);
   next(err);
 });
 

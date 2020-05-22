@@ -5,6 +5,7 @@ include ../../common/mixins/index.pug
     +body()
       +header({
         logged: true,
+        currentUser,
         list: {
           myTickets: {
             active: true,
