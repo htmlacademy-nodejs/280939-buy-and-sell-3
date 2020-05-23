@@ -1,6 +1,6 @@
 mixin ticket-img(img = {}, className = 'ticket__img')
   div(class=`${className}`)
-    if img
+    if img.src && img.srcset
       img(src=`${img.src}` srcset=`${img.srcset}` alt='Изображение товара')
 
 mixin ticket-info(ticket, currentUser, categories)
