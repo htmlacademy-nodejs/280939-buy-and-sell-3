@@ -11,8 +11,10 @@ include ../../common/common.pug
       main.page-content
         if selectedTicket
           +ticket({
-            img: selectedTicket.img,
+            ticket: selectedTicket,
             comments,
             usersData,
             logged: true,
+            currentUser,
+            categoriesListData,
           })

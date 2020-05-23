@@ -1,5 +1,9 @@
 'use strict';
 
+const dayjs = require(`dayjs`);
+require(`dayjs/locale/ru`);
+dayjs.locale(`ru`);
+
 const getDataForCommentsPage = ({myTicketsListData, usersData, commentsData}) => {
   const ticketsDBData = [];
   const userIdsMap = [];
@@ -26,6 +30,23 @@ const getDataForCommentsPage = ({myTicketsListData, usersData, commentsData}) =>
   };
 };
 
+const formatDate = (date) => dayjs(date).format(`D MMMM YYYY`);
+
+const prepateFieldData = (obj, field, func) => {
+  const {[field]: targetValue, ...restData} = obj;
+  return {
+    ...restData,
+    [field]: func(targetValue),
+  };
+};
+
+const prepareObjectsData = (arr, field, func) => {
+  return arr.map((obj) => prepateFieldData(obj, field, func));
+};
+
 module.exports = {
   getDataForCommentsPage,
+  formatDate,
+  prepareObjectsData,
+  prepateFieldData,
 };
