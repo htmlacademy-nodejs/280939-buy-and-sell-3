@@ -9,11 +9,10 @@ include ../../common/common.pug
         inputHref: 'ticket-form.html',
       })
       main.page-content
-        +ticket({
-          img: {
-            src: 'img/ticket.jpg',
-            srcset: 'img/ticket@2x.jpg 2x',
-          },
-          comments: {},
-          logged: true,
-        })
+        if selectedTicket
+          +ticket({
+            img: selectedTicket.img,
+            comments,
+            usersData,
+            logged: true,
+          })

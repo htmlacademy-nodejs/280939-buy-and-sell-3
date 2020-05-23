@@ -1,5 +1,5 @@
-mixin comment(commentData, usersData)
-  li.js-card
+mixin comment({commentData, usersData, isEditable = false})
+  li(class=`${isEditable ? 'js-card' : ''}`)
     .comment-card
       .comment-card__header
         each userData in usersData
@@ -10,16 +10,17 @@ mixin comment(commentData, usersData)
             p.comment-card__author= `${userData.name}`
       .comment-card__content
         p= `${commentData.comment}`
-      button.comment-card__delete.js-delete(type='button') Удалить
+      if isEditable
+        button.comment-card__delete.js-delete(type='button') Удалить
 
-mixin comments-list(ticket, commentsData, usersData)
+mixin comments-list(ticketData, commentsData, usersData, isEditable = false)
   .comments__block
     .comments__header
       a.announce-card(href='#')
-        h2.announce-card__title= `${ticket.title}`
+        h2.announce-card__title= `${ticketData.title}`
         span.announce-card__info
-          span.announce-card__price= `₽ ${ticket.price}`
-          span.announce-card__type= `${ticket.label}`
+          span.announce-card__price= `₽ ${ticketData.price}`
+          span.announce-card__type= `${ticketData.label}`
     ul.comments-list
       each commentData in commentsData
-        +comment(commentData, usersData)
+        +comment({commentData, usersData, isEditable})

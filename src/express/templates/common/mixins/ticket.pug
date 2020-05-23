@@ -49,7 +49,7 @@ mixin ticket-comment-form
           span Обязательное поле
       button.comment-form__button.btn.btn--white.js-button(type='submit' disabled) Отправить
 
-mixin ticket-comments(comments, logged = false)
+mixin ticket-comments(comments = [], logged = false, usersData)
   .ticket__comments
     if logged
       h2.ticket__subtitle Коментарии
@@ -62,31 +62,14 @@ mixin ticket-comments(comments, logged = false)
           | только для зарегистрированных пользователей.
         a.btn.btn--big(href='sign-up.html') Вход и регистрация
       h2.ticket__subtitle Коментарии
-    if !comments
+    if !comments.length
       .ticket__message
         p У этой публикации еще нет ни одного комментария.
     else
       .ticket__comments-list
         ul.comments-list
-          li
-            .comment-card
-              .comment-card__header
-                a.comment-card__avatar.avatar(href='#')
-                  img(src='img/avatar02.jpg' srcset='img/avatar02@2x.jpg 2x' alt='Аватар пользователя')
-                p.comment-card__author Георгий Шпиц
-              .comment-card__content
-                p Что это за рухлядь? Стыдно такое даже фотографировать, не то, что продавать.
-          li
-            .comment-card
-              .comment-card__header
-                a.comment-card__avatar.avatar(href='#')
-                  img(src='img/avatar03.jpg' srcset='img/avatar03@2x.jpg 2x' alt='Аватар пользователя')
-                p.comment-card__author Александр Бурый
-              .comment-card__content
-                p
-                  | А можете доставить мне домой? Готов доплатить 300 сверху.
-                  br
-                  | Живу в центре прямо рядом с Моховой улицей. Готов купить прямо сейчас. Мой телефон 9032594748
+          each commentData in comments
+            +comment({commentData, usersData})
 
 mixin ticket(props = {})
   section.ticket
@@ -95,4 +78,4 @@ mixin ticket(props = {})
       .ticket__content
         +ticket-img(props.img)
         +ticket-info
-      +ticket-comments(props.comments, props.logged)
+      +ticket-comments(props.comments, props.logged, props.usersData)

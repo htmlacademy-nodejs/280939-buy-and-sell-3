@@ -20,4 +20,4 @@ include ../../common/common.pug
             each commentsForTicket, ticketId in commentsDBData
               each ticketData in ticketsDBData
                 if ticketData.color === ticketId
-                  +comments-list(ticketData, commentsForTicket, usersDBData)
+                  +comments-list(ticketData, commentsForTicket, usersDBData, true)

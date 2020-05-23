@@ -8,9 +8,6 @@ include ../../common/common.pug
       })
       main.page-content
         +ticket({
-          img: {
-            src: 'img/ticket.jpg',
-            srcset: 'img/ticket@2x.jpg 2x',
-          },
-          comments: {},
+          img: selectedTicket.img,
+          comments,
         })
