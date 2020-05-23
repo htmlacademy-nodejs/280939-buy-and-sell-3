@@ -16,8 +16,11 @@ include ../../common/common.pug
       main.page-content
         section.comments
           .comments__wrapper
-            h1.visually-hidden Страница комментариев
-            each commentsForTicket, ticketId in commentsDBData
-              each ticketData in ticketsDBData
-                if ticketData.color === ticketId
-                  +comments-list(ticketData, commentsForTicket, usersDBData, true)
+            if ticketsDBData.length
+              h1.visually-hidden Страница комментариев
+              each commentsForTicket, ticketId in commentsDBData
+                each ticketData in ticketsDBData
+                  if ticketData.color === ticketId
+                    +comments-list(ticketData, commentsForTicket, usersDBData, true)
+            else
+              p.comments__message У ваших публикаций еще нет комментариев.
