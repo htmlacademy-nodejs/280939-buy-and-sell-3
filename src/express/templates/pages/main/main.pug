@@ -8,19 +8,28 @@ include ../../common/common.pug
       +header({
         inputHref: 'sign-up.html',
       })
-      main.page-content
-        +categories-list({
-          titleHidden: 'Сервис объявлений "Куплю - продам"',
-          categories: categoriesListData,
-          anchorDefaultClassName: true
-        })
-        +tickets-list({
-          title: 'Самое свежее',
-          titleHidden: 'Самые новые предложения',
-          tickets: newTicketsListData,
-        })
-        +tickets-list({
-          title: 'Самые обсуждаемые',
-          titleHidden: 'Самые обсуждаемые предложения',
-          tickets: popularTicketsListData,
-        })
+      if data
+        - categoriesListData = data.categoriesListData
+        - newTicketsListData = data.newTicketsListData
+        - popularTicketsListData = data.popularTicketsListData
+        main.page-content
+          +categories-list({
+            titleHidden: 'Сервис объявлений "Куплю - продам"',
+            categories: categoriesListData,
+            anchorDefaultClassName: true
+          })
+          +tickets-list({
+            title: 'Самое свежее',
+            titleHidden: 'Самые новые предложения',
+            tickets: newTicketsListData,
+          })
+          +tickets-list({
+            title: 'Самые обсуждаемые',
+            titleHidden: 'Самые обсуждаемые предложения',
+            tickets: popularTicketsListData,
+          })
+      else
+        .message
+          .message__text
+            p На сайте еще не опубликовано ни одного объявления.
+          a.message__link.btn.btn--big(href='#') Вход и регистрация

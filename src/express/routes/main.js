@@ -14,9 +14,11 @@ const MainRouter = new Router();
 const currentUser = usersData.find((user) => user.id === `01`);
 
 MainRouter.get(`/`, (req, res) => res.render(`pages/main/main`, {
-  newTicketsListData,
-  popularTicketsListData,
-  categoriesListData,
+  data: {
+    newTicketsListData,
+    popularTicketsListData,
+    categoriesListData,
+  },
   currentUser,
 }));
 MainRouter.get(`/register`, (req, res) => res.render(`pages/main/sign-up`));

@@ -14,9 +14,5 @@ SearchRouter.get(`/`, (req, res) => res.render(`pages/search/search-result`, {
   newTicketsListData,
   query: `Автомобиль`
 }));
-SearchRouter.get(`/empty`, (req, res) => res.render(`pages/search/search-result--empty`, {
-  newTicketsListData,
-  query: `Балалайка`
-}));
 
 module.exports = SearchRouter;
