@@ -26,5 +26,6 @@ mixin categories-list(props)
       h1.visually-hidden= `${props.titleHidden}`
     ul(class=`${className}__wrapper`)
       each category, categoryIndex in props.categories
-        - isActive = (categoryIndex + 1) === props.activeIndex
-        +category-item(className, category, isActive, props.anchorDefaultClassName)
+        if category.count
+          - isActive = (categoryIndex + 1) === props.activeIndex
+          +category-item(className, category, isActive, props.anchorDefaultClassName)

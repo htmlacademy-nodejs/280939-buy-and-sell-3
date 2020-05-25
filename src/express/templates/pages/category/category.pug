@@ -11,14 +11,14 @@ include ../../common/common.pug
       main.page-content
         +categories-list({
           titleHidden: 'Сервис объявлений "Куплю - продам"',
-          categories: categoriesListData,
+          categories: data.categoriesListData,
           activeIndex: 2,
         })
         +tickets-list({
           title: 'Электроника',
           titleHidden: 'Предложения из категории электроника',
-          tickets: categoryTicketsListData,
-          categoriesListData,
+          tickets: data.categoryTicketsListData,
+          categoriesListData: data.categoriesListData,
           pagination: true,
           categoryTicketsCount: 62,
         })

@@ -2,37 +2,31 @@
   {
     "id": 1,
     "img":{"src":"img/cat.jpg","srcset":"img/cat@2x.jpg 2x"},
-    "label":"Дом",
-    "count": 81
+    "label":"Дом"
   },
   {
     "id": 2,
     "img":{"src":"img/cat02.jpg","srcset":"img/cat02@2x.jpg 2x"},
-    "label":"Электроника",
-    "count": 62
+    "label":"Электроника"
   },
   {
     "id": 3,
     "img":{"src":"img/cat03.jpg","srcset":"img/cat03@2x.jpg 2x"},
-    "label":"Одежда",
-    "count": 106
+    "label":"Одежда"
   },
   {
     "id": 4,
     "img":{"src":"img/cat04.jpg","srcset":"img/cat04@2x.jpg 2x"},
-    "label":"Спорт и отдых",
-    "count": 86
+    "label":"Спорт и отдых"
   },
   {
     "id": 5,
     "img":{"src":"img/cat05.jpg","srcset":"img/cat05@2x.jpg 2x"},
-    "label":"Авто",
-    "count": 34
+    "label":"Авто"
   },
   {
     "id": 6,
     "img":{"src":"img/cat06.jpg","srcset":"img/cat06@2x.jpg 2x"},
-    "label":"Книги",
-    "count": 92
+    "label":"Книги"
   }
 ]
