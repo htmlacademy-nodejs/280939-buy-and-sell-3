@@ -4,6 +4,10 @@ const path = require(`path`);
 const express = require(`express`);
 const chalk = require(`chalk`);
 const routers = require(`./router`);
+const dayjs = require(`dayjs`);
+
+require(`dayjs/locale/ru`);
+dayjs.locale(`ru`);
 
 const DEFAULT_PORT = process.env.PORT || 8080;
 

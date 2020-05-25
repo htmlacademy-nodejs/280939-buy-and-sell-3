@@ -1,7 +1,7 @@
 'use strict';
 
 const {Router} = require(`express`);
-const {getDataForCommentsPage} = require(`./utils/utils`);
+const {myController} = require(`../controllers`);
 
 const {
   myTicketsListData,
@@ -21,7 +21,7 @@ MyRouter.get(`/`, (req, res) => res.render(`pages/tickets/my-tickets`, {
 }));
 
 MyRouter.get(`/comments`, (req, res) => res.render(`pages/tickets/comments`, {
-  ...getDataForCommentsPage({myTicketsListData, usersData, commentsData}),
+  ...myController.getDataForCommentsPage({myTicketsListData, usersData, commentsData}),
   currentUser,
 }));
 

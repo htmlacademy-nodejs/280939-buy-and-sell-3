@@ -11,7 +11,7 @@ const {
 } = require(`../../../templateData/bd.js`);
 
 const {
-  prepateFieldData,
+  prepareFieldData,
   formatDate
 } = require(`./utils/utils`);
 
@@ -36,7 +36,7 @@ OffersRouter.get(`/edit/:id`, (req, res) => res.render(`pages/tickets/ticket-edi
 }));
 OffersRouter.get(`/:id`, (req, res) => res.render(`pages/tickets/ticket`, {
   currentUser,
-  selectedTicket: prepateFieldData(selectedTicket, `createdDate`, formatDate),
+  selectedTicket: prepareFieldData(selectedTicket, `createdDate`, formatDate),
   usersData,
   categoriesListData,
   comments: commentsData[selectedTicket.color]
