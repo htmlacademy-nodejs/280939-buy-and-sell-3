@@ -22,11 +22,13 @@ include ../../common/common.pug
             title: 'Самое свежее',
             titleHidden: 'Самые новые предложения',
             tickets: newTicketsListData,
+            categoriesListData,
           })
           +tickets-list({
             title: 'Самые обсуждаемые',
             titleHidden: 'Самые обсуждаемые предложения',
             tickets: popularTicketsListData,
+            categoriesListData,
           })
       else
         .message

@@ -11,6 +11,7 @@ include ../../common/common.pug
         if searchResults && searchResults.length
           +tickets-list({
             tickets: searchResults,
+            categoriesListData,
             listType: 'search-results',
           })
         else
@@ -26,5 +27,6 @@ include ../../common/common.pug
           title: 'Самое свежее',
           titleHidden: 'Самые новые предложения',
           tickets: newTicketsListData,
+          categoriesListData,
           showMoreItemsCount: 25,
         })

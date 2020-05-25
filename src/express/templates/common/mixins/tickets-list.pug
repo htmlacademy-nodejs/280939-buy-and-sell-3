@@ -1,4 +1,4 @@
-mixin ticket-card(className, props, isUserEditable)
+mixin ticket-card(className, props, isUserEditable, categoriesListData)
   li(class=`${className}__item`)
     .ticket-card(class=`ticket-card--color${props.color}`)
       +ticket-img(props.img, 'ticket-card__img')
@@ -7,7 +7,9 @@ mixin ticket-card(className, props, isUserEditable)
         if props.categories && props.categories.length
           .ticket-card__categories
             each category in props.categories
-              a(href='#')= `${category}`
+              each categoryData in categoriesListData
+                if categoryData.id === category
+                  a(href='#')= `${categoryData.label}`
         .ticket-card__header
           h3.ticket-card__title
             a(href='#')= `${props.title}`
@@ -64,6 +66,6 @@ mixin tickets-list(props)
             span.js-results= `${props.tickets.length} публикации`
         ul(class=`${listType === 'tickets' ? '' : `${listType}__list`}`)
           each ticketItem in props.tickets
-            +ticket-card(className, ticketItem, isUserEditable)
+            +ticket-card(className, ticketItem, isUserEditable, props.categoriesListData)
         if props.pagination
           +pagination

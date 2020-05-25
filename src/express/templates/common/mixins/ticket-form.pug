@@ -38,7 +38,7 @@ mixin ticket-form(props = {}, isNew)
                   - optionSelected = false
                   if !isNew
                     each userCategory in props.categories
-                      if userCategory === category.label
+                      if userCategory === category.id
                         - optionSelected = true
                   option(value=`${category.id}` selected=optionSelected)= `${category.label}`
             .ticket-form__row
