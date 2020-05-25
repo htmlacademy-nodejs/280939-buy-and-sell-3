@@ -29,21 +29,12 @@ const readDirAsync = (folderPath) => fs.promises.readdir(folderPath, (err, files
   return files;
 });
 
-// eslint-disable-next-line consistent-return
 const readFileAsync = async (pathToFile, asText) => {
-  try {
-    const data = await fs.promises.readFile(pathToFile, `utf8`);
-    if (asText) {
-      return data;
-    }
-    return data.toString().split(`\n`).filter(Boolean);
-  } catch (err) {
-    console.log(chalk.red(err));
-    if (asText) {
-      return `[]`;
-    }
-    return [];
+  const data = await fs.promises.readFile(pathToFile, `utf8`);
+  if (asText) {
+    return data;
   }
+  return data.toString().split(`\n`).filter(Boolean);
 };
 
 const writeToFileAsync = async (pathToFile, name, content) => {

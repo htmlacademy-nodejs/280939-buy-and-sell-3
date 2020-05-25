@@ -8,7 +8,7 @@ const {
   HTTP_NOT_FOUND_CODE,
 } = HTTP_CODES;
 
-const getDefautRoute = (res, message) => {
+const getDefaultRoute = (res, message) => {
   writeHead(res, HTTP_NOT_FOUND_CODE, `text/plain`);
   res.end(message || `Не повезло, :(`);
 };
@@ -16,15 +16,16 @@ const getDefautRoute = (res, message) => {
 const getBaseRoute = async (res) => {
   const filePath = `${process.cwd()}/mocks.json`;
   let data;
+  let jsonData;
   try {
     data = await readFileAsync(filePath, true);
+    jsonData = JSON.parse(data);
   } catch (err) {
     if (err) {
-      getDefautRoute(res);
+      return getDefaultRoute(res);
     }
   }
 
-  const jsonData = JSON.parse(data);
   if (jsonData.length) {
     const template = [];
     template.push(`<ul>\n`);
@@ -33,13 +34,13 @@ const getBaseRoute = async (res) => {
     }
     template.push(`</ul>`);
     writeHead(res, HTTP_SUCCESS_CODE);
-    res.end(template.join(``));
+    return res.end(template.join(``));
   } else {
-    getDefautRoute(res, `Not found`);
+    return getDefaultRoute(res, `Not found`);
   }
 };
 
 module.exports = {
   '/': getBaseRoute,
-  "default": getDefautRoute,
+  "default": getDefaultRoute,
 };
