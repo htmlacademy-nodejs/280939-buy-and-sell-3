@@ -20,6 +20,7 @@ const getBaseRoute = async (res) => {
     data = await readFileAsync(filePath, true);
   } catch (err) {
     if (err) {
+      data = `[]`;
       getDefautRoute(res);
     }
   }

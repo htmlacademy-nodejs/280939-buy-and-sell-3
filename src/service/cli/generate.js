@@ -44,15 +44,16 @@ const getSamples = async () => {
 
   const files = await readDirAsync(PATH_TO_FILES);
 
-  const filesWithTypesMap = files.map((file) => file.split(`.`));
-
-  filesWithTypesMap.forEach(([fileName, fileType]) => {
-    samples[fileName] = readFileAsync(path.join(PATH_TO_FILES, `${fileName}.${fileType}`));
-  });
-
-  for (const key in samples) {
-    if (samples[key]) {
-      samples[key] = await samples[key];
+  for (const name in files) {
+    if (files.hasOwnProperty(name)) {
+      const [fileName, fileType] = files[name].split(`.`);
+      try {
+        samples[fileName] = await readFileAsync(path.join(PATH_TO_FILES, `${fileName}.${fileType}`));
+      } catch (error) {
+        if (error) {
+          console.log(chalk.red(error));
+        }
+      }
     }
   }
 
