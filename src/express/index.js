@@ -5,7 +5,7 @@ const express = require(`express`);
 const chalk = require(`chalk`);
 const routers = require(`./router`);
 
-const DEFAULT_PORT = 8080;
+const DEFAULT_PORT = process.env.PORT || 8080;
 
 const app = express();
 
