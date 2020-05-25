@@ -22,7 +22,7 @@ const getBaseRoute = async (res) => {
     jsonData = JSON.parse(data);
   } catch (err) {
     if (err) {
-      getDefaultRoute(res);
+      return getDefaultRoute(res);
     }
   }
 
@@ -34,9 +34,9 @@ const getBaseRoute = async (res) => {
     }
     template.push(`</ul>`);
     writeHead(res, HTTP_SUCCESS_CODE);
-    res.end(template.join(``));
+    return res.end(template.join(``));
   } else {
-    getDefaultRoute(res, `Not found`);
+    return getDefaultRoute(res, `Not found`);
   }
 };
 
