@@ -63,7 +63,7 @@ mixin tickets-list(props)
         else
           p(class=`${className}__label`)
             | Найдено
-            span.js-results= `${props.tickets.length} публикации`
+            span.js-results= ` ${props.tickets.length} публикации`
         ul(class=`${listType === 'tickets' ? '' : `${listType}__list`}`)
           each ticketItem in props.tickets
             +ticket-card(className, ticketItem, isUserEditable, props.categoriesListData)
