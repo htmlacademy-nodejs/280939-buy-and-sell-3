@@ -1,0 +1,38 @@
+[
+  {
+    "id": "01",
+    "name": "Денис Шкатулкин",
+    "email": "01@ha.ru",
+    "avatar": {
+      "src": "img/avatar.jpg",
+      "srcset": "img/avatar@2x.jpg 2x"
+    }
+  },
+  {
+    "id": "02",
+    "name": "Георгий Шпиц",
+    "email": "02@ha.ru",
+    "avatar": {
+      "src": "img/avatar02.jpg",
+      "srcset": "img/avatar02@2x.jpg 2x"
+    }
+  },
+  {
+    "id": "03",
+    "name": "Александр Бурый",
+    "email": "03@ha.ru",
+    "avatar": {
+      "src": "img/avatar03.jpg",
+      "srcset": "img/avatar03@2x.jpg 2x"
+    }
+  },
+  {
+    "id": "04",
+    "name": "Анатолий Хакимов",
+    "email": "04@ha.ru",
+    "avatar": {
+      "src": "img/avatar04.jpg",
+      "srcset": "img/avatar04@2x.jpg 2x"
+    }
+  }
+]

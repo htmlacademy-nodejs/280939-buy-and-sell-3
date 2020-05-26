@@ -1,0 +1,23 @@
+include ../../common/common.pug
+
++layout()
+  +html()
+    +body()
+      +header({
+        logged: true,
+        currentUser,
+        list: {
+          myTickets: {
+            active: true,
+          },
+        },
+        inputHref: 'ticket-form.html',
+      })
+      main.page-content
+        +tickets-list({
+          titleHidden: 'Самые новые предложения',
+          tickets: myTicketsListData,
+          categoriesListData,
+          logged: true,
+          js: true,
+        })

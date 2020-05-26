@@ -1,0 +1,71 @@
+mixin ticket-card(className, props, isUserEditable, categoriesListData)
+  li(class=`${className}__item`)
+    .ticket-card(class=`ticket-card--color${props.color}`)
+      +ticket-img(props.img, 'ticket-card__img')
+      .ticket-card__info
+        span.ticket-card__label= `${props.label}`
+        if props.categories && props.categories.length
+          .ticket-card__categories
+            each category in props.categories
+              each categoryData in categoriesListData
+                if categoryData.id === category
+                  a(href='#')= `${categoryData.label}`
+        .ticket-card__header
+          h3.ticket-card__title
+            a(href='#')= `${props.title}`
+          p.ticket-card__price
+            span.js-sum= `${props.price}`
+            |  ₽
+        if !isUserEditable
+          .ticket-card__desc
+            +shortenText(props.description, 'p')
+      if isUserEditable
+        button.ticket-card__del.js-delete(type='button') Удалить
+
+mixin pagination
+  .tickets-list__pagination
+    ul.pagination
+      li
+        a.active(href='#') 1
+      li
+        a(href='#') 2
+      li
+        a(href='#') 3
+      li
+        a(href='#') 4
+      li
+        a(href='#') 5
+      li
+        a(href='#') дальше
+
+mixin tickets-list(props)
+  - isUserEditable = props.js && props.logged
+  - listType = props.listType || 'tickets'
+  - className = listType === 'tickets' ? `${listType}-list` : listType
+  if props.tickets && props.tickets.length
+    section(class=className)
+      if props.titleHidden
+        h2.visually-hidden= `${props.titleHidden}`
+      div(class=`${className}__wrapper`)
+        if listType === 'tickets'
+          if !isUserEditable
+            if props.title
+              div(class=`${className}__header`)
+                p(class=`${className}__title`)= `${props.title}`
+                  if props.categoryTicketsCount
+                    b.js-qty= `${props.categoryTicketsCount}`
+                if props.showMoreItemsCount
+                  a(class=`${className}__link` href='#')= `Еще ${props.showMoreItemsCount}`
+          else
+            div(class=`${className}__header`)
+              a(class=`${className}__btn btn btn--big` href='#')
+                span Новая публикация
+        else
+          p(class=`${className}__label`)
+            | Найдено
+            span.js-results= ` ${props.tickets.length} публикации`
+        ul(class=`${listType === 'tickets' ? '' : `${listType}__list`}`)
+          each ticketItem in props.tickets
+            +ticket-card(className, ticketItem, isUserEditable, props.categoriesListData)
+        if props.pagination
+          +pagination

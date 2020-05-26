@@ -1,0 +1,26 @@
+include ../../common/common.pug
+
++layout()
+  +html()
+    +body()
+      +header({
+        logged: true,
+        currentUser,
+        list: {
+          comments: {
+            active: true,
+          },
+        },
+        inputHref: 'ticket-form.html',
+      })
+      main.page-content
+        section.comments
+          .comments__wrapper
+            if ticketsDBData.length
+              h1.visually-hidden Страница комментариев
+              each commentsForTicket, ticketId in commentsDBData
+                each ticketData in ticketsDBData
+                  if ticketData.color === ticketId
+                    +comments-list(ticketData, commentsForTicket, usersDBData, true)
+            else
+              p.comments__message У ваших публикаций еще нет комментариев.

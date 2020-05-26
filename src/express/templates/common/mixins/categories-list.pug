@@ -1,0 +1,31 @@
+mixin category-item(className, props, isActive, anchorDefaultClassName)
+  - img = props.img
+  - itemClassName = 'category-tile'
+  - anchorClassName = isActive ? `${itemClassName}--active` : itemClassName
+  li(class=`${className}__item`)
+    a(class=`${anchorDefaultClassName ? `${anchorClassName} ${anchorClassName}--default` : anchorClassName}` href='#')
+      span(class=`${itemClassName}__image`)
+        img(src=img.src srcset=img.srcset alt='Иконка категории')
+      span(class=`${itemClassName}__label`)
+        span= `${props.label}`
+        |&nbsp;
+        span(class=`${itemClassName}__qty js-qty`)= `${props.count}`
+
+mixin category-item-small(props)
+  - img = props.img
+  li
+    a.category-tile.category-tile--small(href='#')
+      span.category-tile__image
+        img(src=img.src srcset=img.srcset alt='Иконка категории')
+      span.category-tile__label= `${props.label}`
+
+mixin categories-list(props)
+  - className = 'categories-list'
+  section(class=className)
+    if props.titleHidden
+      h1.visually-hidden= `${props.titleHidden}`
+    ul(class=`${className}__wrapper`)
+      each category, categoryIndex in props.categories
+        if category.count
+          - isActive = (categoryIndex + 1) === props.activeIndex
+          +category-item(className, category, isActive, props.anchorDefaultClassName)

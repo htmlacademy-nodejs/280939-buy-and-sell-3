@@ -1,0 +1,56 @@
+mixin ticket-form(props = {}, isNew)
+  - formTitle = !isNew ? 'Редактировать публикацию' : 'Новая публикация'
+  - img = props.img
+  - multipleCategoriesSelected = false
+  if props.categories
+    - multipleCategoriesSelected = props.categories.length >= 2
+  - buyChecked = props.label === 'Куплю'
+  - sellChecked = props.label === 'Продам'
+
+  section.ticket-form
+    .ticket-form__wrapper
+      h1.ticket-form__title= `${formTitle}`
+      .ticket-form__tile
+        form.ticket-form__form.form(action='#' method='post' enctype='multipart/form-data' autocomplete='off')
+          .ticket-form__avatar-container.js-preview-container(class=`${img ? 'uploaded' : ''}`)
+            .ticket-form__avatar.js-preview
+              if img
+                img(src=`${img.src}` srcset=`${img.srcset}` alt)
+            .ticket-form__field-avatar
+              input#avatar.visually-hidden.js-file-field(type='file' name='avatar')
+              label(for='avatar')
+                span.ticket-form__text-upload Загрузить фото…
+                span.ticket-form__text-another Загрузить другое фото…
+          .ticket-form__content
+            .ticket-form__row
+              .form__field
+                input#ticket-name.js-field(type='text' name='ticket-name' required value=`${props.title || ''}`)
+                label(for='ticket-name') Название
+                span Обязательное поле
+            .ticket-form__row
+              .form__field
+                textarea#comment-field.js-field(name='comment' cols='30' rows='10' maxlength='400' minlength='50')= `${props.description || ''}`
+                label(for='comment-field') Описание
+                span Обязательное поле
+            .ticket-form__row
+              select#category-field.form__select.js-multiple-select(name='category' data-label='Выбрать категорию публикации' multiple=`${multipleCategoriesSelected}`)
+                each category in categoriesListData
+                  - optionSelected = false
+                  if !isNew
+                    each userCategory in props.categories
+                      if userCategory === category.id
+                        - optionSelected = true
+                  option(value=`${category.id}` selected=optionSelected)= `${category.label}`
+            .ticket-form__row
+              .form__field.form__field--price
+                input#price-field.js-field.js-price(type='number' name='price' min='1' required value=`${props.price || ''}`)
+                label(for='price-field') Цена
+                span Обязательное поле
+              .form__switch.switch
+                .switch__item
+                  input#buy-field.visually-hidden(type='radio' name='action' value='buy' checked=buyChecked)
+                  label.switch__button(for='buy-field') Куплю
+                .switch__item
+                  input#sell-field.visually-hidden(type='radio' name='action' value='sell' checked=sellChecked)
+                  label.switch__button(for='sell-field') Продам
+          button.form__button.btn.btn--medium.js-button(type='submit' disabled=`${isNew}`)= `${isNew ? 'Опубликовать' : 'Сохранить'}`

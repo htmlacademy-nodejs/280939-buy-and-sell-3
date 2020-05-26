@@ -1,0 +1,18 @@
+mixin html(className)
+  html(class=className lang='ru')
+    include ../head.pug
+    if block
+      block
+
+mixin body(className)
+  body(class=className)
+    if block
+      block
+    include ../scripts.pug
+
+mixin layout(withFooter = true)
+  doctype html
+  if block
+    block
+  if withFooter
+    include ../footer.pug

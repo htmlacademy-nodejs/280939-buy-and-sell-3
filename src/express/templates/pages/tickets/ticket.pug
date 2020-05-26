@@ -1,0 +1,20 @@
+include ../../common/common.pug
+
++layout()
+  +html()
+    +body()
+      +header({
+        logged: true,
+        currentUser,
+        inputHref: 'ticket-form.html',
+      })
+      main.page-content
+        if selectedTicket
+          +ticket({
+            ticket: selectedTicket,
+            comments,
+            usersData,
+            logged: true,
+            currentUser,
+            categoriesListData,
+          })

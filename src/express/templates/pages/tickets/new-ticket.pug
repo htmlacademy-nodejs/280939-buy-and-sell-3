@@ -1,0 +1,12 @@
+include ../../common/common.pug
+
++layout()
+  +html()
+    +body()
+      +header({
+        logged: true,
+        currentUser,
+        inputHref: 'ticket-form.html',
+      })
+      main.page-content
+        +ticket-form({}, true)

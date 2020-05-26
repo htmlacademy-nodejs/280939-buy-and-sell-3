@@ -1,0 +1,10 @@
+include ../../common/common.pug
+
++layout(false)
+  +html("html-server")
+    +body("body-server")
+      main
+        section.error
+          h1.error__title 500
+          h2.error__subtitle Ошибка cервера
+          include ../../common/error.pug
