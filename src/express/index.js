@@ -2,7 +2,7 @@
 
 const path = require(`path`);
 const express = require(`express`);
-const chalk = require(`chalk`);
+const logger = require(`../utils/logger`);
 const routers = require(`./router`);
 const dayjs = require(`dayjs`);
 
@@ -23,7 +23,7 @@ for (let [key, router] of Object.entries(routers)) {
 }
 
 app.use((err, req, res, next) => {
-  console.log(chalk.red(err.message));
+  logger.error(err.message);
   res
     .status(500)
     .render(`pages/errors/500`);
@@ -31,5 +31,5 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(DEFAULT_PORT, () => {
-  console.log(`"Сервер запущен на порту: ${DEFAULT_PORT}`);
+  logger.success(`Сервер запущен на порту: ${DEFAULT_PORT}`);
 });
