@@ -1,33 +1,47 @@
 'use strict';
-const http = require(`http`);
+
+const express = require(`express`);
 const chalk = require(`chalk`);
+const routers = require(`./router`);
 const {
   parseCommandParam,
 } = require(`../../../utils/utils`);
-const router = require(`./router`);
 
 const DEFAULT_PORT = process.env.PORT || 3000;
 
-const runServer = (port) => {
-  const httpServer = http.createServer(router);
+const startApp = (port) => {
+  const app = express();
 
-  httpServer.listen(port, (err) => {
-    if (err) {
-      return console.log(chalk.red(`Ошибка при создании http-сервера.`), chalk.red(err));
-    }
+  app.use(express.json());
 
-    return console.log(chalk.green(`Сервер запущен на порту ${port}`));
+  Object.keys(routers).forEach((key) => {
+    app.use(key, routers[key]);
   });
+
+  app.use((err, req, res, next) => {
+    console.log(chalk.red(err.message));
+    res
+      .status(500);
+    next(err);
+  });
+
+  app.listen(port, () => {
+    console.log(chalk.green(`Сервер запущен на порту ${port}`));
+  });
+};
+
+const run = (input) => {
+  let port = DEFAULT_PORT;
+  const userPort = parseCommandParam(input);
+  if (!isNaN(userPort)) {
+    port = userPort;
+  }
+  startApp(port);
 };
 
 module.exports = {
   name: `--server`,
-  run(input) {
-    let port = DEFAULT_PORT;
-    const userPort = parseCommandParam(input);
-    if (!isNaN(userPort)) {
-      port = userPort;
-    }
-    runServer(port);
-  }
+  run
 };
+
+// run([3000]); // для отладки
