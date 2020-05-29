@@ -14,9 +14,9 @@ const startApp = (port) => {
 
   app.use(express.json());
 
-  Object.keys(routers).forEach((key) => {
-    app.use(key, routers[key]);
-  });
+  for (let [key, router] of Object.entries(routers)) {
+    app.use(key, router);
+  }
 
   app.use((err, req, res, next) => {
     console.log(chalk.red(err.message));

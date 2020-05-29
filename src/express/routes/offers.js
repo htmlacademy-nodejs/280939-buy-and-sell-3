@@ -16,22 +16,22 @@ const {
   formatDate
 } = require(`./utils/utils`);
 
-const OffersRouter = new Router();
+const offersRouter = new Router();
 
 const currentUser = usersData.find((user) => user.id === `01`);
 
-OffersRouter.get(`/category`, (req, res) => res.render(`pages/category/category`, offersController.getDataForTicketsCategoryPage())); // возможно нет такого роута - добавил чтобы пристроить одноименный шаблон
-OffersRouter.get(`/category/:id`, (req, res) => res.send(`/offers/category/:id`));
-OffersRouter.get(`/add`, (req, res) => res.render(`pages/tickets/new-ticket`, {
+offersRouter.get(`/category`, (req, res) => res.render(`pages/category/category`, offersController.getDataForTicketsCategoryPage())); // возможно нет такого роута - добавил чтобы пристроить одноименный шаблон
+offersRouter.get(`/category/:id`, (req, res) => res.send(`/offers/category/:id`));
+offersRouter.get(`/add`, (req, res) => res.render(`pages/tickets/new-ticket`, {
   categoriesListData,
   currentUser,
 }));
-OffersRouter.get(`/edit/:id`, (req, res) => res.render(`pages/tickets/ticket-edit`, {
+offersRouter.get(`/edit/:id`, (req, res) => res.render(`pages/tickets/ticket-edit`, {
   categoriesListData,
   selectedTicket,
   currentUser,
 }));
-OffersRouter.get(`/:id`, (req, res) => res.render(`pages/tickets/ticket`, {
+offersRouter.get(`/:id`, (req, res) => res.render(`pages/tickets/ticket`, {
   currentUser,
   selectedTicket: prepareFieldData(selectedTicket, `createdDate`, formatDate),
   usersData,
@@ -39,4 +39,4 @@ OffersRouter.get(`/:id`, (req, res) => res.render(`pages/tickets/ticket`, {
   comments: commentsData[selectedTicket.color]
 }));
 
-module.exports = OffersRouter;
+module.exports = offersRouter;

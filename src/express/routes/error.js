@@ -2,11 +2,11 @@
 
 const {Router} = require(`express`);
 
-const ErrorsRouter = new Router();
+const errorsRouter = new Router();
 
-ErrorsRouter.get(``, (req, res) => {
+errorsRouter.get(``, (req, res) => {
   res.statusCode = 404;
   res.render(`pages/errors/404`);
 });
 
-module.exports = ErrorsRouter;
+module.exports = errorsRouter;

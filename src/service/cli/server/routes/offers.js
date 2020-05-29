@@ -3,9 +3,9 @@
 const {Router} = require(`express`);
 const {readFileAsync} = require(`../../../../utils/utils`);
 
-const OffersRouter = new Router();
+const offersRouter = new Router();
 
-OffersRouter.get(``, async (req, res) => {
+offersRouter.get(``, async (req, res) => {
   try {
     const filePath = `${process.cwd()}/mocks.json`;
     const data = await readFileAsync(filePath);
@@ -16,4 +16,4 @@ OffersRouter.get(``, async (req, res) => {
   return;
 });
 
-module.exports = OffersRouter;
+module.exports = offersRouter;

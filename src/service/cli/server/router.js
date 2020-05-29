@@ -1,9 +1,9 @@
 'use strict';
 
-const OffersRouter = require(`./routes/offers`);
-const ErrorsRouter = require(`./routes/error`);
+const offersRouter = require(`./routes/offers`);
+const errorsRouter = require(`./routes/error`);
 
 module.exports = {
-  "/offers": OffersRouter,
-  "*": ErrorsRouter,
+  "/offers": offersRouter,
+  "*": errorsRouter,
 };

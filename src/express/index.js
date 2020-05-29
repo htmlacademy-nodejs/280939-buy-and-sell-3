@@ -18,9 +18,9 @@ app.set(`view engine`, `pug`);
 
 app.use(express.static(path.resolve(__dirname, `public`)));
 
-Object.keys(routers).forEach((key) => {
-  app.use(key, routers[key]);
-});
+for (let [key, router] of Object.entries(routers)) {
+  app.use(key, router);
+}
 
 app.use((err, req, res, next) => {
   console.log(chalk.red(err.message));
