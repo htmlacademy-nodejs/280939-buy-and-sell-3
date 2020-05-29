@@ -9,7 +9,7 @@ offersRouter.get(``, async (req, res) => {
   try {
     const filePath = `${process.cwd()}/mocks.json`;
     const data = await readFileAsync(filePath);
-    res.send(data[0]);
+    res.send(...data);
   } catch (err) {
     res.send([]);
   }
