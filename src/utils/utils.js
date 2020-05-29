@@ -1,7 +1,7 @@
 'use strict';
 
 const fs = require(`fs`);
-const chalk = require(`chalk`);
+const logger = require(`../utils/logger`);
 const path = require(`path`);
 const {exitCodes} = require(`../config/constants`);
 
@@ -24,7 +24,7 @@ const shuffle = (someArray) => {
 
 const readDirAsync = (folderPath) => fs.promises.readdir(folderPath, (err, files) => {
   if (err) {
-    console.log(chalk.red(err));
+    logger.error(err);
   }
   return files;
 });
@@ -41,10 +41,10 @@ const writeToFileAsync = async (pathToFile, name, content) => {
   const filePath = path.join(pathToFile, name);
   try {
     await fs.promises.writeFile(filePath, content, `utf8`);
-    console.log(`Файл ${chalk.green(name)} был создан!`);
-    console.log(`Расположение: ${chalk.cyan(path.resolve(filePath))}`);
+    logger.log(`Файл ${name} был создан!`);
+    logger.log(`Расположение: ${path.resolve(filePath)}`);
   } catch (err) {
-    console.log(chalk.red(err));
+    logger.error(err);
   }
 };
 

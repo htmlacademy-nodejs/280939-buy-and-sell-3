@@ -1,7 +1,7 @@
 'use strict';
 
 const express = require(`express`);
-const chalk = require(`chalk`);
+const logger = require(`../../../utils/logger`);
 const routers = require(`./router`);
 const {
   parseCommandParam,
@@ -19,14 +19,13 @@ const startApp = (port) => {
   }
 
   app.use((err, req, res, next) => {
-    console.log(chalk.red(err.message));
-    res
-      .status(500);
+    logger.error(err.message);
+    res.status(500);
     next(err);
   });
 
   app.listen(port, () => {
-    console.log(chalk.green(`Сервер запущен на порту ${port}`));
+    logger.success(`Сервер запущен на порту ${port}`);
   });
 };
 
