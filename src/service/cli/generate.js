@@ -1,6 +1,6 @@
 'use strict';
 
-const chalk = require(`chalk`);
+const logger = require(`../../utils/logger`);
 const path = require(`path`);
 const {
   exit,
@@ -23,11 +23,11 @@ const getUserCount = (input) => {
   const parsedCount = parseCommandParam(input);
 
   if (isNaN(parsedCount)) {
-    console.log(chalk.red(`Вы не указали параметры или они не валидны. Будет создана 1 запись.`));
+    logger.error(`Вы не указали параметры или они не валидны. Будет создана 1 запись.`);
 
     return DEFAULT_COUNT;
   } else if (parsedCount > MAX_ITEMS_ALLOWED) {
-    console.log(chalk.red(`Возможно создать не больше ${MAX_ITEMS_ALLOWED} записей`));
+    logger.error(`Возможно создать не больше ${MAX_ITEMS_ALLOWED} записей`);
     exit(`ERROR`);
   }
 
@@ -51,7 +51,7 @@ const getSamples = async () => {
         samples[fileName] = await readFileAsync(path.join(PATH_TO_FILES, `${fileName}.${fileType}`));
       } catch (error) {
         if (error) {
-          console.log(chalk.red(error));
+          logger.error(error);
         }
       }
     }
@@ -98,4 +98,4 @@ module.exports = {
   run
 };
 
-// run([1]); // for debugging
+// run([10]); // for debugging

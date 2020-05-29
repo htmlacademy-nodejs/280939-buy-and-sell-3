@@ -10,19 +10,19 @@ const {
   categoriesListData,
 } = require(`../../../templateData/bd.js`);
 
-const MyRouter = new Router();
+const myRouter = new Router();
 
 const currentUser = usersData.find((user) => user.id === `01`);
 
-MyRouter.get(`/`, (req, res) => res.render(`pages/tickets/my-tickets`, {
+myRouter.get(`/`, (req, res) => res.render(`pages/tickets/my-tickets`, {
   myTicketsListData,
   currentUser,
   categoriesListData,
 }));
 
-MyRouter.get(`/comments`, (req, res) => res.render(`pages/tickets/comments`, {
+myRouter.get(`/comments`, (req, res) => res.render(`pages/tickets/comments`, {
   ...myController.getDataForCommentsPage({myTicketsListData, usersData, commentsData}),
   currentUser,
 }));
 
-module.exports = MyRouter;
+module.exports = myRouter;
